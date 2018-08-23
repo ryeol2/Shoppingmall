@@ -8,6 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<img class="images" src="C:/Users/이재렬/Desktop/Spring/ShoppingMall/src/main/webapp/resources/images/lauren-fleischmann-470110-unsplash.jpg">
+<img class="images" src="C:/Users/이재렬/git/Shoppingmall/ShoppingMall/src/main/webapp/resources/images/lauren-fleischmann-470110-unsplash.jpg">
 </body>
 </html>

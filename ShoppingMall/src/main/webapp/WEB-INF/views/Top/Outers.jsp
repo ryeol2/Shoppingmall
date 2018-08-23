@@ -36,6 +36,7 @@
 </div><br>
 <div class="box-footer">
 <div class="text-center">
+
 <c:if test="${pageMaker.prev}">
 <a href="#" id="preBtn" onclick="prebtn()"><font size="5px">이전</font></a>
 </c:if>
@@ -44,7 +45,7 @@
 
 </c:forEach>
 <c:if test="${pageMaker.next && pageMaker.prev}">
-<a href="#" id="nextBtn" onclick="nextbtn()"><font size="5px">다음</font></a>
+<a href="#" id="nextBtn" onclick="nextbtn('outers')"><font size="5px">다음</font></a>
 </c:if>
 </div>
 </div>

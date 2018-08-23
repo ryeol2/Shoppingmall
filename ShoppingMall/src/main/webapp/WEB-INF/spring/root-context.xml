@@ -36,8 +36,12 @@
 	</bean>
 	
 	
-	<bean id="uploadPath" class="java.lang.String">
+	<!--  <bean id="uploadPath" class="java.lang.String">
 	<constructor-arg value="C:/Users/이재렬/Desktop/Spring/ShoppingMall/src/main/webapp/resources/images"></constructor-arg>
+	</bean> git에 올리기전에 사용하던 upload Path-->
+	
+	<bean id="uploadPath" class="java.lang.String">
+	<constructor-arg value="C:/Users/이재렬/git/Shoppingmall/ShoppingMall/src/main/webapp/resources/images"></constructor-arg>
 	</bean>
 	
 	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>

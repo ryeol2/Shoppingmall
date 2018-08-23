@@ -66,6 +66,30 @@ public class MainController {
 		return "/Top/Outers";
 	}
 	
+	@RequestMapping(value="getPrevPage", method=RequestMethod.GET)
+	public @ResponseBody String getPrev(@RequestParam("category")String category) {
+		System.out.println(category);
+		String url="";
+		if(category.equals("outers")) {
+			url = "Outers"+pageMaker.makeQuery(pageMaker.getStartPage()-1);
+		}else if(category.equals("jackets")) {
+			url = "Jackets"+pageMaker.makeQuery(pageMaker.getStartPage()-1);
+		}
+		return url;
+	}
+	
+	@RequestMapping(value="getNextPage", method=RequestMethod.GET)
+	public @ResponseBody String getNext(@RequestParam("category")String category) {
+		System.out.println(category);
+		String url="";
+		if(category.equals("outers")) {
+			url = "Outers"+pageMaker.makeQuery(pageMaker.getEndPage()+1);
+		}else if(category.equals("jackets")) {
+			url = "Jackets"+pageMaker.makeQuery(pageMaker.getEndPage()+1);
+		}
+		return url;
+	}
+	
 	@RequestMapping(value="getPageSite", method=RequestMethod.GET)
 	public @ResponseBody String getPageSite(@RequestParam("category")String category, @RequestParam("page") String page) {
 		System.out.println(category+"//"+page);

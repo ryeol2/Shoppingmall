@@ -13,13 +13,19 @@ public class PageMaker {
 	private boolean prev; // 이전
 	private boolean next; // 다음
 
-	private int displayPageNum = 10; // 페이지수 1~10페이지까지
+	private int displayPageNum = 5; // 페이지수 1~5페이지까지
 
-	private Criteria criteria;
+	private Criteria criteria = new Criteria();
 
 	public void setCriteria(Criteria criteria) {
 		this.criteria = criteria;
 	}
+	
+	public Criteria getCriteria() {
+		return criteria;
+	}
+
+
 
 	public void setTotalCount(int totalCount) { //전체 게시글수
 		this.totalCount = totalCount;
@@ -28,7 +34,7 @@ public class PageMaker {
 
 	private void calcData() {
 
-		getEndPage();
+		getEndPage(); 
 		getStartPage();
 
 		int tempEndPage = (int) (Math.ceil(totalCount / (double) criteria.getPerPageNum())); // 전체 게시글수 / 한 페이지에 출력할 게시글 수
@@ -36,44 +42,44 @@ public class PageMaker {
 		if (endPage > tempEndPage) {
 			endPage = tempEndPage;
 		}
+		
+		isPrev();
+		isNext();
 
 	}
 
 	public int getStartPage() {
-		if(endPage<displayPageNum) {
-			return startPage =1;
+		if(getEndPage()<displayPageNum) {
+			startPage =1;
 		}else {
-		return startPage = (endPage - displayPageNum) +1;
+		 startPage = (getEndPage() - displayPageNum) +1;
 		}
+		return startPage;
 	}
 
-	public void setStartPage(int startPage) {
-		this.startPage = startPage;
-	}
+	
 
 	public int getEndPage() {
-		return endPage = (int) (Math.ceil(criteria.getPage() / (double) displayPageNum) * displayPageNum);
+	
+		endPage = (int) (Math.ceil(criteria.getPage() / (double) displayPageNum) * displayPageNum);
+		
+		return endPage;
 	}
 
-	public void setEndPage(int endPage) {
-		this.endPage = endPage;
-	}
+	
 
 	public boolean isPrev() {
-		return prev = startPage == 1 ? false : true;
+		prev = startPage == 1 ? false : true;
+		return prev;
 	}
 
-	public void setPrev(boolean prev) {
-		this.prev = prev;
-	}
+	
 
 	public boolean isNext() {
-		return next = endPage * criteria.getPerPageNum() >= totalCount ? false : true;
+		next = endPage * criteria.getPerPageNum() >= totalCount ? false : true;
+		return next;
 	}
 
-	public void setNext(boolean next) {
-		this.next = next;
-	}
 	
 	public String makeQuery(int page) {
 		UriComponents uriCom = UriComponentsBuilder.newInstance().queryParam("page", page).queryParam("perPageNum", criteria.getPerPageNum()).build();
