@@ -1,0 +1,14 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="spring.project.shopping.join_interface.Join">
+<insert id="joinUser" parameterType="spring.project.shopping.userdto.UserDTO">
+INSERT INTO USERINFO(USERID, USERPWD,USERNAME, USEREMAIL, USERADDS, USERIP) VALUES (#{userId}, #{userPwd}, #{userName}, #{userEmail}, #{userAdds}, #{userIp})
+</insert>
+
+<select id="checkId" parameterType="java.lang.String" resultType="spring.project.shopping.userdto.UserDTO">
+SELECT USERID FROM USERINFO WHERE USERID = #{userId}
+</select>
+
+</mapper>

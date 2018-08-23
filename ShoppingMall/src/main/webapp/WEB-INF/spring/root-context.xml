@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	<!-- Root Context: defines shared resources visible to all other web components -->
+		<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/shoppingmall?serverTimezone=UTC"></property>
+		<property name="username" value="scott"></property>
+		<property name="password" value="scott"></property>
+	</bean>
+		<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="mapperLocations"
+			value="classpath*:mappers/**/*.xml"></property>
+			</bean>
+			
+			<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+		<constructor-arg index="0"
+			ref="sqlSessionFactory"></constructor-arg>
+	</bean>
+	
+	
+	<bean id="uploadPath" class="java.lang.String">
+	<constructor-arg value="C:/Users/이재렬/Desktop/Spring/ShoppingMall/src/main/webapp/resources/images"></constructor-arg>
+	</bean>
+	
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+	
+	  <!--  <bean id="Admin_Interceptor" class="spring.project.shopping.interceptor.Admin_Interceptor"></bean>
+	
+	<mvc:interceptors>
+	<mvc:interceptor>
+	<mvc:mapping path="/admin/**"/>
+	<bean class="spring.project.shopping.interceptor.Admin_Interceptor"></bean>
+	</mvc:interceptor>
+	</mvc:interceptors>-->
+	
+	<context:component-scan base-package="spring.project.shopping"></context:component-scan>
+		
+	
+</beans>

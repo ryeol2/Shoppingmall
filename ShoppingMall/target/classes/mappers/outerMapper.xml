@@ -1,0 +1,74 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="spring.project.shopping.outerMapper">
+<insert id="registryOuter" parameterType="spring.project.shopping.topdto.TopDTO">
+INSERT INTO TOP_OUTER(IMGNAME, PRODUCTNAME, STOCK, PDESCRIBE, PRICE) 
+VALUES (#{imgName}, #{productName}, #{stock}, #{pdescribe}, #{price})
+</insert>
+
+<select id="outerList" resultType="spring.project.shopping.topdto.TopDTO">
+SELECT PRODUCTID, IMGNAME, PRODUCTNAME, STOCK, PDESCRIBE, PRICE FROM TOP_OUTER ORDER BY PRODUCTID DESC
+	LIMIT #{pageStart}, #{perPageNum}
+</select>
+
+<select id="itemTotal" resultType="java.lang.Integer">
+SELECT COUNT(*) FROM TOP_OUTER 
+</select>
+
+<select id="detailOuter" resultType="spring.project.shopping.topdto.TopDTO">
+SELECT PRODUCTID, IMGNAME, PRODUCTNAME, STOCK, PDESCRIBE, PRICE FROM TOP_OUTER WHERE PRODUCTID = #{productId}
+</select>
+
+<update id="purchaseOuter" parameterType="spring.project.shopping.topdto.TopDTO">
+UPDATE TOP_OUTER SET STOCK = STOCK - #{stock} WHERE PRODUCTID = #{productId}
+</update>
+
+<update id="modifyOuter" parameterType="spring.project.shopping.topdto.TopDTO">
+UPDATE TOP_OUTER SET PRODUCTNAME = #{productName}, STOCK = #{stock}, PDESCRIBE = #{pdescribe}, PRICE = #{price}
+WHERE PRODUCTID = #{productId} 
+</update>
+
+<delete id="deleteOuter" parameterType="java.lang.Integer">
+DELETE FROM TOP_OUTER WHERE PRODUCTID = #{productId}
+</delete>
+
+<!-- <include refid="stock"></include> <sql id="stock">
+<if test="stockCount != null">
+<if test="stockCount == 1">
+OUTERSTOCK -1
+</if>
+<if test="stockCount == 2">
+OUTERSTOCK -2
+</if>
+<if test="stockCount == 3">
+OUTERSTOCK -3
+</if>
+<if test="stockCount == 4">
+OUTERSTOCK -4
+</if>
+<if test="stockCount == 5">
+OUTERSTOCK -5
+</if>
+<if test="stockCount == 6">
+OUTERSTOCK -6
+</if>
+<if test="stockCount == 7">
+OUTERSTOCK -7
+</if>
+<if test="stockCount == 8">
+OUTERSTOCK -8
+</if>
+<if test="stockCount == 9">
+OUTERSTOCK -9
+</if>
+<if test="stockCount == 10">
+OUTERSTOCK -10
+</if>
+
+
+</if>
+</sql> -->
+
+</mapper>

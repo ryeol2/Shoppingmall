@@ -1,0 +1,12 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="spring.project.shopping.loginMapper">
+<select id="LoginCheck" resultType="spring.project.shopping.userdto.UserDTO">
+SELECT USERID, USERPWD, USERNAME, USERADDS FROM USERINFO WHERE USERID= #{userId}
+</select>
+
+
+
+</mapper>

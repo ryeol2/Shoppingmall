@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+.purchaseForm{
+	position: static;
+}
+
+.outer_img{
+	display: inline;
+	
+}
+
+.outer_name{
+		align: center;
+}
+
+.box-footer{
+	width: 100%;
+	text-align:center;
+}
+
+.text-center{
+	display: inline-block;
+	text-align:center;
+	
+}

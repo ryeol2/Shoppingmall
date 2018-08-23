@@ -1,0 +1,38 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="spring.project.shopping.jacketMapper">
+<insert id="registryJacket" parameterType="spring.project.shopping.topdto.TopDTO">
+INSERT INTO TOP_JACKET(IMGNAME, PRODUCTNAME, STOCK, PDESCRIBE, PRICE) 
+VALUES (#{imgName}, #{productName}, #{stock}, #{pdescribe}, #{price})
+</insert>
+
+<select id="JacketList" resultType="spring.project.shopping.topdto.TopDTO">
+SELECT PRODUCTID, IMGNAME, PRODUCTNAME, STOCK, PDESCRIBE, PRICE FROM TOP_JACKET ORDER BY PRODUCTID DESC
+	LIMIT #{pageStart}, #{perPageNum}
+</select>
+
+<select id="itemTotal" resultType="java.lang.Integer">
+SELECT COUNT(*) FROM TOP_JACKET
+</select>
+
+<select id="detailJacket" resultType="spring.project.shopping.topdto.TopDTO">
+SELECT PRODUCTID, IMGNAME, PRODUCTNAME, STOCK, PDESCRIBE, PRICE FROM TOP_JACKET WHERE PRODUCTID = #{productId}
+</select>
+
+<update id="purchaseJacket" parameterType="spring.project.shopping.topdto.TopDTO">
+UPDATE TOP_Jacket SET STOCK = STOCK - #{stock} WHERE PRODUCTID = #{productId}
+</update>
+
+<update id="modifyJacket" parameterType="spring.project.shopping.topdto.TopDTO">
+UPDATE TOP_JACKET SET PRODUCTNAME = #{productName}, STOCK = #{stock}, PDESCRIBE = #{pdescribe}, PRICE = #{price}
+WHERE PRODUCTID = #{productId} 
+</update>
+
+<delete id="deleteJacket" parameterType="java.lang.Integer">
+DELETE FROM TOP_JACKET WHERE PRODUCTID = #{productId}
+</delete>
+
+
+</mapper>

@@ -1,0 +1,104 @@
+@charset "utf-8";
+
+body{
+	bacground-color: white;
+}
+
+#loginJoin{
+text-align: right;
+}
+#mainLink{
+text-color: green;
+text-align: center;
+}
+
+.category {
+	border: none;
+	margin: 0px;
+	padding: 0px;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.category ul {
+	background: black;
+	height: 40px; /*테두리 변경*/
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.category li {
+	
+	float: left;
+	padding: 0px;
+}
+
+.category li a {
+	width: 265px; /* 블록별 간격 */
+	background: black;
+	color: white;
+	display: block;
+	font-weight: normal;
+	line-height: 40px; /*테두리변경2*/
+	margin: 0px;
+	font-color: white;
+	text-align: center;
+	text-decoration: none;
+}
+
+.category li a:hover, .category ul li:hover a {
+	background: rgb(71, 71, 71);
+	/*color: #FFFFFF; */
+	
+}
+
+.category li ul {
+	background: black;
+	display: none; /* 평상시에는 드랍메뉴가 안보이게 하기 */
+	height: auto;
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	position: absolute;
+	/*width: 200px;*/
+	z-index: 200;
+}
+
+.category li:hover ul {
+	display: block; /* 마우스 커서 올리면 드랍메뉴 보이게 하기 */
+}
+
+.category li li {
+	background: rgb(109, 109, 109);
+	display: block;
+	float: none;
+	margin: 0px;
+	padding: 0px;
+	
+}
+
+.category li:hover li a {
+	background: none;
+}
+
+.category li ul a { 
+/*서브 메뉴 */
+	display: block;
+	height: 50px;
+	font-size: 15px;
+	margin: 0px;
+	padding: 0px 10px 0px 10px;
+	text-align: left;
+}
+
+.category li ul a:hover, .category li ul li:hover a {
+	background: rgb(71, 71, 71);
+	border: 0px;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.category p {
+	clear: left;
+}

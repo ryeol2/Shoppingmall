@@ -1,0 +1,37 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="spring.project.shopping.cartMapper">
+<insert id="insertCart" parameterType="spring.project.shopping.cartdto.CartDTO">
+INSERT INTO CART(USERID, CATEGORY, PRODUCTID, PRODUCTNAME, STOCK, PRICE) VALUES(#{userId}, #{category}, #{productId}, #{productName}, #{stock}, #{price})
+</insert>
+
+<select id="cartList" parameterType="java.lang.String" resultType="spring.project.shopping.cartdto.CartDTO">
+SELECT CARTID, USERID, PRODUCTNAME, STOCK, PRICE FROM CART WHERE USERID = #{userId}
+</select>
+
+
+<!--  <sql id="productName">
+<if test="category !=null">
+<if test="category == outers">
+O.PRODUCTNAME AS PRODUCTNAME
+</if>
+<if test="category == jackets">
+J.PRODUCTNAME AS PRODUCTNAME
+</if>
+</if>
+</sql>
+
+<sql id="categories">
+<if test="category !=null">
+<if test="category == outers">
+AND  C.PRODUCTID = C.PRODUCTID
+</if>
+<if test="category == jackets">
+AND C.PRODUCTID = J.PRODUCTID
+</if>
+</if>
+</sql>-->
+
+</mapper>
