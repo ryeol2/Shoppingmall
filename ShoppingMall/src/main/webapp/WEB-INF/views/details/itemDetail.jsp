@@ -16,7 +16,7 @@
 <form action="purchase" method="get">
 
 <h1 align="center">${detail.productName}</h1>
-<p align="center"><img alt="${detail.imgName}" src="${path}/${detail.imgName}" width="500px" height="300px"></p><br>
+<p align="center"><img alt="${detail.imgName}" src="/imgReposity/${detail.imgName}" width="500px" height="300px"></p><br>
 
 <p align="center">${detail.pdescribe}</p>
 <c:choose>
@@ -48,7 +48,7 @@
 <p align="center"><input type="submit" value="구매하기"></p>
 
 <input type="hidden" name="item" value="${detail.productId}">
-<input type="hidden" name="shopping_category" value="top_outer">
+<input type="hidden" name="category" value="${category }">
 
 </form>
 

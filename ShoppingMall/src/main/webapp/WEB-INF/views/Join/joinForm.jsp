@@ -18,9 +18,9 @@
 <form action="joinSuccess" method="post" id="joinSuccess">
 <p>아이디 &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="userId" id="userid" size="20">&nbsp;&nbsp;&nbsp;
 <input type="button" value="중복 확인" onclick="idCheck()"></p>
-<p>이    름 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="userName" id="userName" size="20">&nbsp;&nbsp;&nbsp;
-<p>비밀번호 <input type="password" name="userPwd" id="userPwd" size="20"><label id="printCheck"></label></p>
-<p>재확인&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" name="userPwdCheck"  id="userPwdCheck" size="20"></p>
+<p>이    름 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="userName" id="userName" size="20">&nbsp;&nbsp;&nbsp;
+<p>비밀번호 &nbsp;<input type="password" name="userPwd" id="userPwd" size="20"><label id="printCheck"></label></p>
+<p>재확인&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" name="userPwdCheck"  id="userPwdCheck" size="20"></p>
 <p>E-mail &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="userEmail_id"  id="userEmail" size="20">&nbsp;&nbsp;&nbsp;
 <select name="userEmail" id="userEmailadds">
 <option>선 택</option>

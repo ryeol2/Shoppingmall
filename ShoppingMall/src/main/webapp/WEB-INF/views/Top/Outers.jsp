@@ -19,7 +19,7 @@
 <c:forEach var="list" items="${listOuter}">
 <tr class="outer_img">
 
-<td align="center"><a href="detail?category=outers&item=${list.productId}"><img src="${path}/${list.imgName}" width="300px" height="300px"></a>
+<td align="center"><a href="detail?category=outers&item=${list.productId}"><img src="/imgReposity/${list.imgName}" width="300px" height="300px"></a>
 
 <br><br>${list.productName}&nbsp;&nbsp;&nbsp; 
 <c:choose>

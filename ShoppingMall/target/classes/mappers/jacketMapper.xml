@@ -9,12 +9,12 @@ VALUES (#{imgName}, #{productName}, #{stock}, #{pdescribe}, #{price})
 </insert>
 
 <select id="JacketList" resultType="spring.project.shopping.topdto.TopDTO">
-SELECT PRODUCTID, IMGNAME, PRODUCTNAME, STOCK, PDESCRIBE, PRICE FROM TOP_JACKET ORDER BY PRODUCTID DESC
+SELECT PRODUCTID, IMGNAME, PRODUCTNAME, STOCK, PDESCRIBE, PRICE FROM TOP_JACKET WHERE PRODUCTID >0  ORDER BY PRODUCTID DESC
 	LIMIT #{pageStart}, #{perPageNum}
 </select>
 
 <select id="itemTotal" resultType="java.lang.Integer">
-SELECT COUNT(*) FROM TOP_JACKET
+SELECT COUNT(*) FROM TOP_JACKET WHERE PRODUCTID >0 
 </select>
 
 <select id="detailJacket" resultType="spring.project.shopping.topdto.TopDTO">

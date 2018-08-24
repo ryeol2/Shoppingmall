@@ -13,8 +13,8 @@
 </head>
 <body>
 <form action="purchased" method="get">
-<p align="center"><img src="${path}/${item_info.imgName}" width="150" height="150"></p>
-<p align="center">상품명 : ${item_info.outerName}</p>
+<p align="center"><img src="/imgReposity/${item_info.imgName}" width="150" height="150"></p>
+<p align="center">상품명 : ${item_info.productName}</p>
 <p align="center">수   량 : ${stock}
 <p align="center">가   격 : <fmt:formatNumber value="${ stock * item_info.price}" pattern="###,###"></fmt:formatNumber>￦</p>
 <p align="center">배송주소 | 기존 배송주소 선택 <input type="checkbox" id="checking"></p>
