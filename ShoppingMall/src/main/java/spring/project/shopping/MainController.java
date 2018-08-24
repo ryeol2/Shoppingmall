@@ -71,7 +71,7 @@ public class MainController {
 		
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("listOuter", listOuter);
-		model.addAttribute("path", path);
+	
 
 		return "/Top/Outers";
 	}
@@ -81,9 +81,9 @@ public class MainController {
 		System.out.println(category);
 		String url="";
 		if(category.equals("outers")) {
-			url = "Outers"+pageMaker.makeQuery(pageMaker.getStartPage()-1);
+			url = "Outers"+pageMaker.makeQuery(pageMaker.getCriteria().getPage()-1); //현재 페이지에서 -1
 		}else if(category.equals("jackets")) {
-			url = "Jackets"+pageMaker.makeQuery(pageMaker.getStartPage()-1);
+			url = "Jackets"+pageMaker.makeQuery(pageMaker.getCriteria().getPage()-1);
 		}
 		return url;
 	}
@@ -93,6 +93,7 @@ public class MainController {
 		System.out.println(category);
 		String url="";
 		if(category.equals("outers")) {
+			System.out.println(pageMaker.getEndPage());
 			url = "Outers"+pageMaker.makeQuery(pageMaker.getEndPage()+1);
 		}else if(category.equals("jackets")) {
 			url = "Jackets"+pageMaker.makeQuery(pageMaker.getEndPage()+1);
@@ -101,12 +102,16 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="getPageSite", method=RequestMethod.GET)
-	public @ResponseBody String getPageSite(@RequestParam("category")String category, @RequestParam("page") String page) {
+	public @ResponseBody String getPageSite(@RequestParam("category")String category, @RequestParam("page") String page,
+			Criteria criteria) {
+		
 		System.out.println(category+"//"+page);
 		String url="";
 		if(category.equals("outers")) {
+	
 		url = "Outers"+pageMaker.makeQuery(Integer.parseInt(page));
 		}else if(category.equals("jackets")) {
+			
 			url="Jackets"+pageMaker.makeQuery(Integer.parseInt(page));
 		}
 		return url;
@@ -141,7 +146,7 @@ List<TopDTO> listJacket = jacketService.itemList(criteria);
 		
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("listJacket", listJacket);
-		model.addAttribute("path", path);
+		
 		return "/Top/Jackets";
 	}
 

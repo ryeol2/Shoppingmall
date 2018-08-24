@@ -38,7 +38,7 @@
 <div class="text-center">
 
 <c:if test="${pageMaker.prev}">
-<a href="#" id="preBtn" onclick="prebtn()"><font size="5px">이전</font></a>
+<a href="#" id="preBtn" onclick="prebtn('outers')"><font size="5px">이전</font></a>
 </c:if>
 <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}"  var="numPage">
 <a href="#"  onclick="numberClick('outers',${numPage})"><font size="5px" >${numPage}</font></a>
