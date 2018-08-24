@@ -1,2 +1,1 @@
-# Shoppingmall
-study&amp;make shopping mall to Spring
+스프링 쇼핑몰 구현
