@@ -1,7 +1,7 @@
 스프링 쇼핑몰 구현<br><br>
 + spring 5.0.7<br>
 + mybatis 3.4.5<br>
-+ mysql.8.0.11<br>
++ mysql  8.0.11<br>
 + javascript(jQuery)<br><br>
 
 1. 쇼핑몰 구현.(관리자페이지, 로그인, 회원가입, 구매, 장바구니 등등)<br>
