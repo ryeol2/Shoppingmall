@@ -15,13 +15,13 @@
 <body>
 <%@ include file="../menu.jsp" %>
 <div class="purchaseForm">
-<table class="outerMain">
+<table id="outerMain">
 <c:forEach var="list" items="${listOuter}">
 <tr class="outer_img">
 
 <td align="center"><a href="detail?category=outers&item=${list.productId}"><img src="/imgReposity/${list.imgName}" width="300px" height="300px"></a>
 
-<br><br>${list.productName}&nbsp;&nbsp;&nbsp; 
+<br><br><p id="productName"></p>&nbsp;&nbsp;&nbsp; 
 <c:choose>
 <c:when test="${list.stock eq 0}">
 <label  style="color:red">품 절</label>
@@ -38,14 +38,14 @@
 <div class="text-center">
 
 <c:if test="${pageMaker.prev}">
-<a href="#" id="preBtn" onclick="prebtn('outers')"><font size="5px">이전</font></a>
+<a href="Outers${pageMaker.makeQuery(pageMaker.startPage-1)}"><font size="5px">이전</font></a>
 </c:if>
 <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}"  var="numPage">
-<a href="#"  onclick="numberClick('outers',${numPage})"><font size="5px" >${numPage}</font></a>
+<a href="Outers${pageMaker.makeQuery(numPage)}"><font size="5px" >${numPage}</font></a>
 
 </c:forEach>
 <c:if test="${pageMaker.next && pageMaker.prev}">
-<a href="#" id="nextBtn" onclick="nextbtn('outers')"><font size="5px">다음</font></a>
+<a href="Outers${pageMaker.makeQuery(pageMaker.endPage+1)}"><font size="5px">다음</font></a>
 </c:if>
 </div>
 </div>

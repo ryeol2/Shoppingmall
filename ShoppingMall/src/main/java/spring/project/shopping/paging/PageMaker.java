@@ -15,14 +15,14 @@ public class PageMaker {
 
 	private int displayPageNum = 10; // 페이지수 1~10페이지까지
 
-	private Criteria criteria = new Criteria();
+	private PageSet pageSet = new PageSet();
 
-	public void setCriteria(Criteria criteria) {
-		this.criteria = criteria;
+	public void setpageSet(PageSet pageSet) {
+		this.pageSet = pageSet;
 	}
 
-	public Criteria getCriteria() {
-		return criteria;
+	public PageSet getpageSet() {
+		return pageSet;
 	}
 
 	public void setTotalCount(int totalCount) { // 전체 게시글수
@@ -31,9 +31,10 @@ public class PageMaker {
 	}
 
 	private void calcData() {
-		int endPage = (int) (Math.ceil(criteria.getPage() / (double) displayPageNum) * displayPageNum);
-		int tempEndPage = (int) (Math.ceil(totalCount / (double) criteria.getPerPageNum())); // 전체 게시글수 / 출력되는 게시글수
-																								// ->보여줄 페이지
+		// ->1 ~ n까지 표시될 페이지 구함.
+		int endPage = (int) (Math.ceil(pageSet.getPage() / (double) displayPageNum) * displayPageNum);
+		int tempEndPage = (int) (Math.ceil(totalCount / (double) pageSet.getPerPageNum())); // 전체 게시글수 / 출력되는 게시글수
+																								
 
 		if (endPage > tempEndPage) { // getendPage 즉 1~10페이지 표시되는데 temp에서 얻은 페이지 표시가 적을경우 적은걸 end페이지로 해줌.
 			setEndPage(tempEndPage);
@@ -68,24 +69,28 @@ public class PageMaker {
 	}
 
 	public boolean isPrev() {
-		prev = getCriteria().getPage() == 1 ? false : true;
+		prev = getpageSet().getPage() == 1 ? false : true;
 		return prev;
 	}
 
 	public boolean isNext() {
-		next = endPage * criteria.getPerPageNum() >= totalCount ? false : true;
+		next = endPage * pageSet.getPerPageNum() >= totalCount ? false : true;
 		return next;
 	}
 
 	public String makeQuery(int page) {
+		if(page<=0) {
+			page =1;
+		}
 		UriComponents uriCom = UriComponentsBuilder.newInstance().queryParam("page", page)
-				.queryParam("perPageNum", criteria.getPerPageNum()).build();
+				.queryParam("perPageNum", pageSet.getPerPageNum()).build();
+		
 		return uriCom.toUriString();
 	}
 
 //	public String makeSearch(int page) {
-//		UriComponents uricom = UriComponentsBuilder.newInstance().queryParam("page", page).queryParam("perPageNum", criteria.getPerPageNum()).queryParam("searchType", ((SearchCriteria) criteria).getSearchType())
-//				.queryParam("keyword", encoding(((SearchCriteria) criteria).getKeyword())).build();
+//		UriComponents uricom = UriComponentsBuilder.newInstance().queryParam("page", page).queryParam("perPageNum", pageSet.getPerPageNum()).queryParam("searchType", ((SearchpageSet) pageSet).getSearchType())
+//				.queryParam("keyword", encoding(((SearchpageSet) pageSet).getKeyword())).build();
 //	return uricom.toUriString();	
 //	}
 

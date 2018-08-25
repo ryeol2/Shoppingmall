@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import spring.project.shopping.paging.Criteria;
+import spring.project.shopping.paging.PageSet;
 import spring.project.shopping.top_interface.Jacket;
 import spring.project.shopping.topdto.TopDTO;
 
@@ -16,7 +16,7 @@ public class JacketService implements Jacket {
 	private SqlSession sqlSession;
 	
 	@Override
-	public List<TopDTO> itemList(Criteria criteria) {
+	public List<TopDTO> itemList(PageSet criteria) {
 		// TODO Auto-generated method stub
 		
 		

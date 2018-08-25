@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import spring.project.shopping.paging.Criteria;
+import spring.project.shopping.paging.PageSet;
 import spring.project.shopping.paging.PageMaker;
 import spring.project.shopping.top_service.JacketService;
 import spring.project.shopping.top_service.OuterService;
@@ -63,10 +63,10 @@ public class MainController {
 	}
 
 	@RequestMapping(value="Outers", method=RequestMethod.GET)
-	public String sOuter(Model model, Criteria criteria) {
-		List<TopDTO> listOuter = outerService.itemList(criteria);
+	public String sOuter(Model model, PageSet pageSet) {
+		List<TopDTO> listOuter = outerService.itemList(pageSet);
 		
-		pageMaker.setCriteria(criteria);
+		pageMaker.setpageSet(pageSet);
 		pageMaker.setTotalCount(outerService.itemCount());
 		
 		model.addAttribute("pageMaker", pageMaker);
@@ -76,46 +76,46 @@ public class MainController {
 		return "/Top/Outers";
 	}
 	
-	@RequestMapping(value="getPrevPage", method=RequestMethod.GET)
-	public @ResponseBody String getPrev(@RequestParam("category")String category) {
-		System.out.println(category);
-		String url="";
-		if(category.equals("outers")) {
-			url = "Outers"+pageMaker.makeQuery(pageMaker.getCriteria().getPage()-1); //현재 페이지에서 -1
-		}else if(category.equals("jackets")) {
-			url = "Jackets"+pageMaker.makeQuery(pageMaker.getCriteria().getPage()-1);
-		}
-		return url;
-	}
-	
-	@RequestMapping(value="getNextPage", method=RequestMethod.GET)
-	public @ResponseBody String getNext(@RequestParam("category")String category) {
-		System.out.println(category);
-		String url="";
-		if(category.equals("outers")) {
-			System.out.println(pageMaker.getEndPage());
-			url = "Outers"+pageMaker.makeQuery(pageMaker.getEndPage()+1);
-		}else if(category.equals("jackets")) {
-			url = "Jackets"+pageMaker.makeQuery(pageMaker.getEndPage()+1);
-		}
-		return url;
-	}
-	
-	@RequestMapping(value="getPageSite", method=RequestMethod.GET)
-	public @ResponseBody String getPageSite(@RequestParam("category")String category, @RequestParam("page") String page,
-			Criteria criteria) {
-		
-		System.out.println(category+"//"+page);
-		String url="";
-		if(category.equals("outers")) {
-	
-		url = "Outers"+pageMaker.makeQuery(Integer.parseInt(page));
-		}else if(category.equals("jackets")) {
-			
-			url="Jackets"+pageMaker.makeQuery(Integer.parseInt(page));
-		}
-		return url;
-	}
+//	@RequestMapping(value="getPrevPage", method=RequestMethod.GET)
+//	public @ResponseBody String getPrev(@RequestParam("category")String category) {
+//		System.out.println(category);
+//		String url="";
+//		if(category.equals("outers")) {
+//			url = "Outers"+pageMaker.makeQuery(pageMaker.getpageSet().getPage()-1); //현재 페이지에서 -1
+//		}else if(category.equals("jackets")) {
+//			url = "Jackets"+pageMaker.makeQuery(pageMaker.getpageSet().getPage()-1);
+//		}
+//		return url;
+//	}
+//	
+//	@RequestMapping(value="getNextPage", method=RequestMethod.GET)
+//	public @ResponseBody String getNext(@RequestParam("category")String category) {
+//		System.out.println(category);
+//		String url="";
+//		if(category.equals("outers")) {
+//			System.out.println(pageMaker.getEndPage());
+//			url = "Outers"+pageMaker.makeQuery(pageMaker.getEndPage()+1);
+//		}else if(category.equals("jackets")) {
+//			url = "Jackets"+pageMaker.makeQuery(pageMaker.getEndPage()+1);
+//		}
+//		return url;
+//	}
+//	
+//	@RequestMapping(value="getPageSite", method=RequestMethod.GET)
+//	public @ResponseBody String getPageSite(@RequestParam("category")String category, @RequestParam("page") String page,
+//			PageSet pageSet) {
+//		
+//		System.out.println(category+"//"+page);
+//		String url="";
+//		if(category.equals("outers")) {
+//	
+//		url = "Outers"+pageMaker.makeQuery(Integer.parseInt(page));
+//		}else if(category.equals("jackets")) {
+//			
+//			url="Jackets"+pageMaker.makeQuery(Integer.parseInt(page));
+//		}
+//		return url;
+//	}
 	
 	
 	@RequestMapping("detail")
@@ -138,10 +138,10 @@ public class MainController {
 	}
 
 	@RequestMapping(value="Jackets", method=RequestMethod.GET)
-	public String sJacket(Model model, Criteria criteria) {
-List<TopDTO> listJacket = jacketService.itemList(criteria);
+	public String sJacket(Model model, PageSet pageSet) {
+List<TopDTO> listJacket = jacketService.itemList(pageSet);
 		
-		pageMaker.setCriteria(criteria);
+		pageMaker.setpageSet(pageSet);
 		pageMaker.setTotalCount(jacketService.itemCount());
 		
 		model.addAttribute("pageMaker", pageMaker);

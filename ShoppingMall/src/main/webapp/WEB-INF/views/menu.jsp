@@ -31,8 +31,8 @@
 <ul>
 <li><a href="#">TOP</a>
 <ul>
-<li><a href="Outers">Outers</a></li>
-<li><a href="Jackets">Jackets</a></li>
+<li><a href="Outers?page=1&perPageNum=12">Outers</a></li>
+<li><a href="Jackets?page=1&perPageNum=12">Jackets</a></li>
 <li><a href="Shirts">Shirts</a></li>
 <li ><a href="KniteWears">kniteWears</a></li>
 </ul></li>

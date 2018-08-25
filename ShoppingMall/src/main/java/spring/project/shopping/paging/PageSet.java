@@ -1,10 +1,10 @@
 package spring.project.shopping.paging;
 
-public class Criteria {
+public class PageSet {
 	private int page; //현재 페이지 번호
 	private int perPageNum; //페이지당 출력되는 게시글 갯수
 	
-	public Criteria() {
+	public PageSet() {
 		this.page = 1;
 		this.perPageNum = 12;
 	}
@@ -17,8 +17,9 @@ public class Criteria {
 		if(page<=0) {
 			this.page =1;
 			
-		}
+		}else {
 		this.page = page;
+		}
 	}
 
 	public int getPerPageNum() {
