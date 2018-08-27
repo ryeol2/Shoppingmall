@@ -35,7 +35,7 @@ public class PurchaseController {
 	@RequestMapping(value = "purchase", method = RequestMethod.GET)
 	public String item_puchase(HttpServletRequest request, @RequestParam("category") String category,
 			@RequestParam("item") int pid, Model model, @RequestParam("stockCount") int stock) {
-this.category = category;
+		this.category = category;
 		this.productId = pid;
 		model.addAttribute("userinfo", request.getSession().getAttribute("logined"));
 		model.addAttribute("path", path);
@@ -74,8 +74,10 @@ this.category = category;
 
 	@RequestMapping(value = "purchased", method = RequestMethod.GET)
 	public String purchased(HttpServletRequest request, HttpServletResponse response, Model model,
-			 @RequestParam("stockCount") int stockCount) throws IOException {
+			@RequestParam("stockCount") int stockCount) throws IOException {
 		TopDTO itemDto = new TopDTO();
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 		if (request.getSession().getAttribute("logined") != null) {
 
 			if (category.equals("outers")) {

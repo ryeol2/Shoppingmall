@@ -38,8 +38,7 @@ public class AdminController {
 		int itemStock = Integer.parseInt(request.getParameter("itemStock"));
 		String itemDescribe = request.getParameter("itemDescribe");
 		String Price = request.getParameter("Price");
-		// String path =
-		// "C:\\Users\\이재렬\\Desktop\\Spring\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\images\\";
+	
 		UUID uuid = UUID.randomUUID(); // 이미지명 식별해주는
 		String imgName = uuid.toString() + "_" + request.getFile("imgFile").getOriginalFilename();
 		File imgDir = new File(uploadPath, imgName);
@@ -97,6 +96,8 @@ public class AdminController {
 	public String deleteItem(@RequestParam("category")String category,@RequestParam("itemNum")int num, HttpServletResponse response) throws IOException {
 		if(category.equals("outers")) {
 		outerService.deleteOuter(num);
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter writer = response.getWriter();
 		writer.println("<script> alert('삭제가 완료되었습니다.'); </script>");
 		writer.flush();

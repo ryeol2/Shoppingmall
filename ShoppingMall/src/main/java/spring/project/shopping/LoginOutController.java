@@ -64,6 +64,10 @@ String password = request.getParameter("userPwd");
 			session.setAttribute("logined", user);
 
 			url = "main";
+			}else {
+				checking.setLoginCheck(false);
+
+				url = "redirect:/login";
 			}
 		} else {
 			checking.setLoginCheck(false);

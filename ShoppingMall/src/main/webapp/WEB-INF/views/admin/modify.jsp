@@ -9,7 +9,7 @@
 </head>
 <body>
 <form action="modified" method="post">
-<p><img alt="${modify_item.imgName}" src="${path}/${modify_item.imgName}" width="500px" height="300px"></p> 
+<p><img alt="${modify_item.imgName}" src="/imgReposity/${modify_item.imgName}" width="500px" height="300px"></p> 
 <p>상품명 : <input type="text" name="itemName" value="${modify_item.productName }" size="30"></p>
 <p>상품설명 : <input type="text" name="itemDescribe" value="${modify_item.pdescribe}" size="100"></p>
 <p>재    고 : <input type="text" name="itemStock" value="${modify_item.stock}" size="10"> 개</p>
