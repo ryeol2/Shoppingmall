@@ -49,6 +49,11 @@ public class PageMaker {
 		isNext();
 
 	}
+	
+	
+public void setStartPage(int startPage) {
+		this.startPage = startPage;
+	}
 
 	public int getStartPage() {
 
@@ -79,9 +84,7 @@ public class PageMaker {
 	}
 
 	public String makeQuery(int page) {
-		if(page<=0) {
-			page =1;
-		}
+		
 		UriComponents uriCom = UriComponentsBuilder.newInstance().queryParam("page", page)
 				.queryParam("perPageNum", pageSet.getPerPageNum()).build();
 		

@@ -48,7 +48,7 @@
 <p align="center"><input type="submit" value="구매하기"></p>
 
 <input type="hidden" name="item" value="${detail.productId}">
-<input type="hidden" name="category" value="${category }">
+<input type="hidden" name="category" value="${category}">
 
 </form>
 
@@ -61,6 +61,7 @@
 <input type="hidden" name="price" value="${detail.price}">
 <input type="hidden" name="cartStock" id="cartStock" >
 <input type="hidden" name="userid"  id="userid" value="${logined.getUserId()}">
+<input type="hidden" name="judgeCart" id="judgeCart">
 </form>
 
 

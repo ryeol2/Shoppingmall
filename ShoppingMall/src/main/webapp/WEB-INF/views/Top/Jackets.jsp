@@ -8,20 +8,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/outer.css" type="text/css"></link>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/item.css" type="text/css"></link>
 <script language="javascript"src="${pageContext.request.contextPath}/resources/js/paging.js"charset="utf-8"></script>
 <title>Jackets</title>
 </head>
 <body>
 <%@ include file="../menu.jsp" %>
 <div class="purchaseForm">
-<table class="outerMain">
+<table id="itemMain">
 <c:forEach var="list" items="${listJacket}">
-<tr class="outer_img">
+<tr class="item_img">
 
 <td align="center"><a href="detail?category=jackets&item=${list.productId}"><img src="/imgReposity/${list.imgName}" width="300px" height="300px"></a>
 
-<br><br>${list.productName}&nbsp;&nbsp;&nbsp; 
+<br><br><p id="productName">${list.productName}</p>
 <c:choose>
 <c:when test="${list.stock eq 0}">
 <label  style="color:red">품 절</label>
@@ -36,16 +36,16 @@
 </div><br>
 <div class="box-footer">
 <div class="text-center">
-<c:if test="${pageMaker.prev}">
-<a href="Jackets${pageMaker.makeQuery(pageMaker.startPage-1)}"><font size="5px">이전</font></a>
-</c:if>
+<!--<c:if test="${pageMaker.prev}"></c:if>-->
+<a href="javascript:void(0);" onclick="prevbtn('outers')"><font size="5px">◀</font></a>
+
 <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}"  var="numPage">
-<a href="Jackets${pageMaker.makeQuery(numPage)}"><font size="5px" >${numPage}</font></a>
+<a href="javascript:void(0);" onclick="numberClick('jackets',${numPage})"><font size="5px" >${numPage}</font></a>
 
 </c:forEach>
-<c:if test="${pageMaker.next && pageMaker.prev}">
-<a href="Jackets${pageMaker.makeQuery(pageMaker.endPage+1)})"><font size="5px">다음</font></a>
-</c:if>
+<!--<c:if test="${pageMaker.next && pageMaker.prev}"></c:if>-->
+<a href="javascript:void(0);" onclick="nextbtn('outers')"><font size="5px">▶</font></a>
+
 
 </div>
 </div>

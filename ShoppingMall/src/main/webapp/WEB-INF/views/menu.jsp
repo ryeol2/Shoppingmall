@@ -10,6 +10,7 @@
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/menu.css" type="text/css"></link>
 <script language="javascript"src="${pageContext.request.contextPath}/resources/js/menu.js"charset="utf-8"></script>
+<script language="javascript"src="${pageContext.request.contextPath}/resources/js/paging.js"charset="utf-8"></script>
 <title>Shopping Mall</title>
 </head>
 
@@ -31,8 +32,8 @@
 <ul>
 <li><a href="#">TOP</a>
 <ul>
-<li><a href="Outers?page=1&perPageNum=12">Outers</a></li>
-<li><a href="Jackets?page=1&perPageNum=12">Jackets</a></li>
+<li><a href="Outers">Outers</a></li>
+<li><a href="Jackets">Jackets</a></li>
 <li><a href="Shirts">Shirts</a></li>
 <li ><a href="KniteWears">kniteWears</a></li>
 </ul></li>

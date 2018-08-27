@@ -8,11 +8,17 @@ var sendCart = function() {
 	if (checkLogin !== "") {
 		document.getElementById('cartStock').value = document
 		.getElementById('stockCount').value;
-document.getElementById('cartBtn').submit(); // submit버튼
+		 // submit버튼
 
 if (confirm("장바구니 목록으로 가시겠습니까?")) {
-	document.location.href("cartList?userid="+checkLogin);
+	//document.location.href("cartList?userid="+checkLogin);
+	document.getElementById('judgeCart').value = true;
+}else{
+	document.getElementById('judgeCart').value = false;
 }
+document.getElementById('cartBtn').submit();
+
+	
 	} else {
 		
 		alert("로그인을 먼저 해주세요.");

@@ -21,10 +21,11 @@ public class CartController {
 	private CartService cartService;
 
 	private String userId;
+	private String url;
 	
 	@RequestMapping("cartList")
-	public String cartPage(Model model, HttpServletRequest request) {
-		userId = request.getParameter("userid");
+	public String cartPage(Model model,@RequestParam("userid")String userid) {
+		userId = userid;
 		List<CartDTO> cartList =  cartService.cartList(userId);
 		model.addAttribute("cartList", cartList );
 		System.out.println(userId);
@@ -33,14 +34,21 @@ public class CartController {
 	}
 	
 	@RequestMapping(value="cart", method=RequestMethod.POST)
-	public String insertCart(HttpServletRequest request,@RequestParam("category")String category,@RequestParam("productName")String pName,
-			@RequestParam("item")int productId,@RequestParam("cartStock")int stock, @RequestParam("price") String price) throws IOException {
-		userId = request.getParameter("userid");
+	public String insertCart(@RequestParam("userid")String userid,@RequestParam("category")String category,@RequestParam("productName")String pName,
+			@RequestParam("item")int productId,@RequestParam("cartStock")int stock, @RequestParam("price") String price,
+			@RequestParam("judgeCart")boolean judge) throws IOException {
+		userId = userid;
 	
 		CartDTO cartDto = new CartDTO(userId, category, productId, pName, stock, price);
 		cartService.insertCart(cartDto);
-		System.out.println("카트db에 등록완료"+userId);
+		System.out.println("카트db에 등록완료"+userId+judge);
+	
+		if(judge) {
+			url = "redirect:/cartList?userid="+userId;
+		}else {
+			url = "redirect:/detail?category="+category+"&item="+productId;
+		}
 		
-		return "redirect:/detail?category="+category+"&item="+productId;
+		return url;
 	}
 }

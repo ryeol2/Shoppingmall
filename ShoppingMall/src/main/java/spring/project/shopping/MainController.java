@@ -40,7 +40,7 @@ public class MainController {
 	
 	private PageMaker pageMaker = new PageMaker();
 	private Checking checking = new Checking();
-	
+	private int page;
 	@RequestMapping("menu")
 	public String sMenu() {
 		return "menu";
@@ -76,20 +76,24 @@ public class MainController {
 		return "/Top/Outers";
 	}
 	
-//	@RequestMapping(value="getPrevPage", method=RequestMethod.GET)
-//	public @ResponseBody String getPrev(@RequestParam("category")String category) {
-//		System.out.println(category);
-//		String url="";
+	@RequestMapping(value="getPrevPage", method=RequestMethod.GET)
+	public @ResponseBody int getPrev(@RequestParam("category")String category, PageSet pageSet) {
+		
+		System.out.println(category+"// 현재페이지 : "+page);
 //		if(category.equals("outers")) {
-//			url = "Outers"+pageMaker.makeQuery(pageMaker.getpageSet().getPage()-1); //현재 페이지에서 -1
+//			page = pageMaker.getStartPage()-1;
+//			//cmd = "Outers"+pageMaker.makeQuery(pageMaker.getpageSet().getPage()-1); //현재 페이지에서 -1
 //		}else if(category.equals("jackets")) {
-//			url = "Jackets"+pageMaker.makeQuery(pageMaker.getpageSet().getPage()-1);
+//			page = pageMaker.getpageSet().getPage()-1;
 //		}
-//		return url;
-//	}
+		
+	
+		System.out.println("이전페이지 : "+page);
+		return pageMaker.getStartPage()-1;
+	}
 //	
-//	@RequestMapping(value="getNextPage", method=RequestMethod.GET)
-//	public @ResponseBody String getNext(@RequestParam("category")String category) {
+	@RequestMapping(value="getNextPage", method=RequestMethod.GET)
+	public @ResponseBody int getNext(@RequestParam("category")String category) {
 //		System.out.println(category);
 //		String url="";
 //		if(category.equals("outers")) {
@@ -98,24 +102,27 @@ public class MainController {
 //		}else if(category.equals("jackets")) {
 //			url = "Jackets"+pageMaker.makeQuery(pageMaker.getEndPage()+1);
 //		}
-//		return url;
-//	}
+		return pageMaker.getEndPage()+1 ;
+	}
 //	
-//	@RequestMapping(value="getPageSite", method=RequestMethod.GET)
-//	public @ResponseBody String getPageSite(@RequestParam("category")String category, @RequestParam("page") String page,
-//			PageSet pageSet) {
-//		
-//		System.out.println(category+"//"+page);
-//		String url="";
-//		if(category.equals("outers")) {
-//	
-//		url = "Outers"+pageMaker.makeQuery(Integer.parseInt(page));
-//		}else if(category.equals("jackets")) {
-//			
-//			url="Jackets"+pageMaker.makeQuery(Integer.parseInt(page));
-//		}
-//		return url;
-//	}
+	@RequestMapping(value="getPageSite", method=RequestMethod.GET)
+	public @ResponseBody List<TopDTO> getPageSite(@RequestParam("category")String category, @RequestParam("page") String page,
+			PageSet pageSet) {
+		List<TopDTO> list = null;
+		System.out.println(category+"//"+page);
+		//String url="";
+		if(category.equals("outers")) {
+			this.page = Integer.parseInt(page);
+			list = outerService.itemList(pageSet);
+		//url = "Outers"+pageMaker.makeQuery(Integer.parseInt(page));
+		}else if(category.equals("jackets")) {
+			this.page = Integer.parseInt(page);
+			list = jacketService.itemList(pageSet);
+			//url="Jackets"+pageMaker.makeQuery(Integer.parseInt(page));
+		}
+		
+		return list;
+	}
 	
 	
 	@RequestMapping("detail")
