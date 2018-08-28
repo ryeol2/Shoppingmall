@@ -1,4 +1,4 @@
-<font size="10">스프링 쇼핑몰 구현</font><br><br>
+<font size="20">스프링 쇼핑몰 구현</font><br><br>
 + spring 5.0.7<br>
 + mybatis 3.4.5<br>
 + mysql  8.0.11<br>
