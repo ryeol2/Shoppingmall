@@ -1,8 +1,12 @@
-<font size="20">스프링 쇼핑몰 구현</font><br><br>
-+ spring 5.0.7<br>
-+ mybatis 3.4.5<br>
-+ mysql  8.0.11<br>
-+ javascript(jQuery)<br><br>
+스프링 쇼핑몰 구현<br><br>
+ 
+ USING TOOLS & LANGUAGES
+ 
+  + Ecilpse photon<br>
+  + spring 5.0.7<br>
+  + mybatis 3.4.5<br>
+  + mysql  8.0.11<br>
+  + javascript(jQuery)<br><br>
 
 1. 쇼핑몰 구현.(관리자페이지, 로그인, 회원가입, 구매, 장바구니 등등)<br>
    -> 수정 : 크롬에서 로컬이미지 안뜨는 상황 수정.(server.xml이용)<br>
