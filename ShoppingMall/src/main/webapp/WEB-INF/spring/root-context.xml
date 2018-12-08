@@ -13,6 +13,8 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!--  Database connection bean -->
 		<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"
@@ -40,10 +42,12 @@
 	<constructor-arg value="C:/Users/이재렬/Desktop/Spring/ShoppingMall/src/main/webapp/resources/images"></constructor-arg>
 	</bean> git에 올리기전에 사용하던 upload Path-->
 	
+	<!-- 사진 업로드 경로 선언 -->
 	<bean id="uploadPath" class="java.lang.String">
 	<constructor-arg value="C:/Users/이재렬/git/Shoppingmall/ShoppingMall/src/main/webapp/resources/images"></constructor-arg>
 	</bean>
 	
+	<!-- password 암호화  -->
 	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
 	
 	  <!--  <bean id="Admin_Interceptor" class="spring.project.shopping.interceptor.Admin_Interceptor"></bean>

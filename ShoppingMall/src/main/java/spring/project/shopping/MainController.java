@@ -1,20 +1,10 @@
 package spring.project.shopping;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.util.MethodInvocationUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import spring.project.shopping.paging.PageSet;
 import spring.project.shopping.paging.PageMaker;
+import spring.project.shopping.paging.PageSet;
 import spring.project.shopping.top_service.JacketService;
 import spring.project.shopping.top_service.OuterService;
 import spring.project.shopping.topdto.TopDTO;
@@ -35,20 +25,21 @@ public class MainController {
 	@Autowired
 	private JacketService jacketService;
 	
-	@Resource(name="uploadPath")
+	@Resource(name="uploadPath") // 표준 java api임 bean id를 name에 적어준다.
 	private String path;
 	
 	private PageMaker pageMaker = new PageMaker();
 	private Checking checking = new Checking();
-	private int page;
+	private int page; // 인스턴스 변수
 	@RequestMapping("menu")
 	public String sMenu() {
+	
 		return "menu";
 	}
 
-	@RequestMapping("main")
+	@RequestMapping("main") // url에서 들어오는 페이지명
 	public String sMain() {
-		checking.setLoginCheck(true);
+		checking.setLoginCheck(true); //로그인 체크
 		return "main";
 	}
 	@RequestMapping("mainSub")

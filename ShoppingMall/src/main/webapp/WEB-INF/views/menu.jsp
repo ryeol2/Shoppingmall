@@ -9,8 +9,8 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/menu.css" type="text/css"></link>
-<script language="javascript"src="${pageContext.request.contextPath}/resources/js/menu.js"charset="utf-8"></script>
-<script language="javascript"src="${pageContext.request.contextPath}/resources/js/paging.js"charset="utf-8"></script>
+<script language="javascript"src="${pageContext.request.contextPath}/resources/js/menu.js" charset="utf-8"></script>
+<script language="javascript"src="${pageContext.request.contextPath}/resources/js/paging.js" charset="utf-8"></script>
 <title>Shopping Mall</title>
 </head>
 

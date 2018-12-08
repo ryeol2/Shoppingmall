@@ -3,8 +3,10 @@
  */
 
 var prevbtn = function(category) {
+	
 	var sendData = {
 		category : category
+	
 	};
 
 	$.ajax({

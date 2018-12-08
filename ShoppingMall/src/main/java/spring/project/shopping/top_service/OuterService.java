@@ -28,7 +28,7 @@ private SqlSession sqlSession;
 	@Override
 		public int itemCount() {
 			// TODO Auto-generated method stub
-			return  sqlSession.selectOne("spring.project.shopping.outerMapper.itemTotal");
+			return  sqlSession.selectOne("spring.project.shopping.outerMapper.itemTotal"); // mapper namespace . mapper id
 		}
 	
 @Override
